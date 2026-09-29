@@ -11,15 +11,15 @@ public class Calculator {
             displayMenu();
 
             try {
-                System.out.print("Enter your choice (1-5): ");
+                System.out.print("Enter your choice (1-6): ");
                 int choice = sc.nextInt();
 
-                if(choice == 5){
+                if(choice == 6){
                     continueCalculation = false;
                     System.out.println("Exiting the calculator. Thank YOU");
                     break;
                 }
-                if(choice<1||choice>5){
+                if(choice<1||choice>6){
                     System.out.println("Invalid choice. Please select a valid option.");
                     continue;
                 }
@@ -50,6 +50,15 @@ public class Calculator {
                             System.out.println(num1 + " / " + num2 + " = " + result);
                         }
                         break;
+                    case 5:
+                        if (num2 ==0){
+                            System.out.println("Error");
+                        }
+                        else{
+                            result = modulus(num1,num2);
+                            System.out.println(num1 + " % " + num2 + " = " + result);
+                        }
+                        break;
                     default:
                         System.out.println("Invalid choice. Please select a valid option.");
                 }
@@ -72,7 +81,8 @@ private static void displayMenu() {
         System.out.println("2. Subtraction");
         System.out.println("3. Multiplication");
         System.out.println("4. Division");
-        System.out.println("5. Exit");
+        System.out.println("5. Modulus");
+        System.out.println("6. Exit");
     }
 
     private static double add(double a, double b) {
@@ -89,5 +99,9 @@ private static void displayMenu() {
 
     private static double divide(double a, double b) {
         return a / b;
+    }
+
+    private static double modulus(double a, double b){
+        return a%b;
     }
 }
